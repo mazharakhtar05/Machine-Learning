@@ -5,6 +5,33 @@ This script demonstrates:
 1. Creating a simple dataset of Study Hours vs Test Scores.
 2. Applying StandardScaler and MinMaxScaler from scikit-learn.
 3. Splitting data into training and testing sets.
+
+
+# Feature Scaling with StandardScaler & MinMaxScaler
+
+## 📌 Question
+**How to Apply Feature Scaling (StandardScaler & MinMaxScaler) with Train-Test Split in Python?**
+
+## 🚀 Overview
+This project demonstrates:
+1. Creating a simple dataset (`StudyHours` vs `TestScore`).
+2. Applying **StandardScaler** and **MinMaxScaler** from scikit-learn.
+3. Splitting the dataset into **training** and **testing** sets using `train_test_split`.
+
+## 🛠️ Libraries Used
+- pandas
+- scikit-learn
+
+## 📂 Files
+- `scaling_demo.py` → Python script with scaling & train-test split
+- `README.md` → Documentation (this file)
+
+## ▶️ How to Run
+```bash
+pip install pandas scikit-learn
+python scaling_demo.py
+
+
 """
 
 # Import libraries
