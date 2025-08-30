@@ -1,0 +1,46 @@
+"""
+How to Apply Feature Scaling (StandardScaler & MinMaxScaler) with Train-Test Split in Python?
+
+This script demonstrates:
+1. Creating a simple dataset of Study Hours vs Test Scores.
+2. Applying StandardScaler and MinMaxScaler from scikit-learn.
+3. Splitting data into training and testing sets.
+"""
+
+# Import libraries
+import pandas as pd
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
+from sklearn.model_selection import train_test_split
+
+# Step 1: Create dataset
+data = {
+    'StudyHours': [1, 2, 3, 4, 5],
+    'TestScore': [40, 50, 60, 70, 80]
+}
+df = pd.DataFrame(data)
+print("Original Data:\n", df, "\n")
+
+# Step 2: Apply StandardScaler
+standard_scaler = StandardScaler()
+standard_scaled = standard_scaler.fit_transform(df)
+
+print("Standard Scaler Output:\n")
+print(pd.DataFrame(standard_scaled, columns=['StudyHours', 'TestScore']), "\n")
+
+# Step 3: Apply MinMaxScaler
+minmax_scaler = MinMaxScaler()
+minmax_scaled = minmax_scaler.fit_transform(df)
+
+print("MinMax Scaler Output:\n")
+print(pd.DataFrame(minmax_scaled, columns=['StudyHours', 'TestScore']), "\n")
+
+# Step 4: Train-Test Split
+X = df[['StudyHours']]  # Features
+y = df[['TestScore']]   # Target
+
+x_train, x_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+print("Training Data (X_train):\n", x_train, "\n")
+print("Test Data (X_test):\n", x_test, "\n")
