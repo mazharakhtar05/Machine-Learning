@@ -1,0 +1,39 @@
+# Student Performance Prediction using Linear and Logistic Regression
+# ---------------------------------------------------------------
+# This program predicts:
+# 1. Expected marks (using Linear Regression)
+# 2. Whether the student will PASS or FAIL (using Logistic Regression)
+# Based on study hours
+
+from sklearn.linear_model import LinearRegression, LogisticRegression
+
+# Sample dataset
+# Study hours vs Marks
+x = [[1], [2], [3], [4], [5]]
+y_marks = [40, 50, 60, 70, 80]  # For Linear Regression (continuous output)
+y_passfail = [0, 0, 1, 1, 1]    # For Logistic Regression (binary output: 0 = Fail, 1 = Pass)
+
+# Train Linear Regression model
+linear_model = LinearRegression()
+linear_model.fit(x, y_marks)
+
+# Train Logistic Regression model
+logistic_model = LogisticRegression()
+logistic_model.fit(x, y_passfail)
+
+# Take user input
+hours = float(input("Enter how many hours you studied = "))
+
+# Predict marks
+predicted_marks = linear_model.predict([[hours]])[0]
+
+# Predict pass/fail
+result = logistic_model.predict([[hours]])[0]
+
+# Show results
+print(f"\n📘 Study Hours: {hours}")
+print(f"📊 Predicted Marks: {predicted_marks:.2f}")
+if result == 1:
+    print("✅ You are likely to PASS")
+else:
+    print("❌ You are likely to FAIL")
