@@ -1,0 +1,67 @@
+# Fruit Classification using KNN and Decision Tree
+# -------------------------------------------------
+# This program classifies whether a fruit is an Apple or Orange
+# using two ML models:
+# 1. K-Nearest Neighbors (KNN)
+# 2. Decision Tree Classifier
+
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.tree import DecisionTreeClassifier
+
+# -----------------------------
+# KNN Classifier (Weight & Size)
+# -----------------------------
+x_knn = [
+    [180, 7],
+    [200, 7.5],
+    [250, 8],
+    [300, 8.5],
+    [330, 9],
+    [360, 9.5]
+]
+y_knn = [0, 0, 0, 1, 1, 1]  # 0 = Apple, 1 = Orange
+
+knn_model = KNeighborsClassifier(n_neighbors=3)
+knn_model.fit(x_knn, y_knn)
+
+# -----------------------------
+# Decision Tree (Size & Shade)
+# -----------------------------
+x_tree = [
+    [7, 2],
+    [8, 3],
+    [9, 8],
+    [10, 9]
+]
+y_tree = [0, 0, 1, 1]  # 0 = Apple, 1 = Orange
+
+tree_model = DecisionTreeClassifier()
+tree_model.fit(x_tree, y_tree)
+
+# -----------------------------
+# User Input
+# -----------------------------
+print("🍎🍊 Fruit Classification System")
+choice = input("Choose model (1 = KNN , 2 = Decision Tree): ")
+
+if choice == "1":
+    weight = float(input("Enter the weight in grams: "))
+    size = float(input("Enter the size in cm: "))
+    prediction = knn_model.predict([[weight, size]])[0]
+
+elif choice == "2":
+    size = float(input("Enter the fruit size in cm: "))
+    shade = float(input("Enter the color shade (1-20): "))
+    prediction = tree_model.predict([[size, shade]])[0]
+
+else:
+    print("❌ Invalid choice!")
+    exit()
+
+# -----------------------------
+# Output
+# -----------------------------
+if prediction == 0:
+    print("✅ This is likely an Apple")
+else:
+    print("🍊 This is likely an Orange")
